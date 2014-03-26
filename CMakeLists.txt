@@ -14,12 +14,14 @@
 # along with jrl-mathtools.  If not, see <http://www.gnu.org/licenses/>.
 
 # Requires at least CMake 2.6 to configure the package.
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
 
-INCLUDE(cmake/base.cmake)
-INCLUDE(cmake/boost.cmake)
-INCLUDE(cmake/lapack.cmake)
-INCLUDE(cmake/cpack.cmake)
+find_package(catkin REQUIRED COMPONENTS sot_cmake)
+
+INCLUDE(${SOT_CMAKE_DIR}/base.cmake)
+INCLUDE(${SOT_CMAKE_DIR}/boost.cmake)
+INCLUDE(${SOT_CMAKE_DIR}/lapack.cmake)
+INCLUDE(${SOT_CMAKE_DIR}/cpack.cmake)
 
 SET(PROJECT_NAME jrl-mathtools)
 SET(PROJECT_DESCRIPTION "JRL mathematical tools")
@@ -39,6 +41,9 @@ SET(${PROJECT_NAME}_HEADERS
 )
 
 SETUP_PROJECT()
+
+catkin_package(INCLUDE_DIRS include)
+
 
 # Search for dependencies.
 SEARCH_FOR_BOOST()
